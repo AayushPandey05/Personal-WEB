@@ -1258,8 +1258,8 @@ img {
   transition: opacity 0.5s ease;
 }
 
-.cert-timeline.expanded::after {
-  opacity: 0;
+.cert-timeline.expanded .cert-card {
+  display: flex !important;
 }
 
 /* Card */
@@ -1305,6 +1305,7 @@ img {
   );
   opacity: 0;
   transition: opacity var(--transition-smooth);
+  pointer-events: none;
 }
 
 .cert-card:hover::after {
@@ -1400,6 +1401,9 @@ img {
   border-radius: 50%;
   border: 1px solid var(--glass-border);
   color: var(--text-muted);
+  position: relative; /* add this */
+  z-index: 5; /* add this */
+  cursor: pointer; /* optional but good */
   transition:
     color var(--transition-fast),
     border-color var(--transition-fast),
