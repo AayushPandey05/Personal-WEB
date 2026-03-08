@@ -9,6 +9,10 @@
   // Detect touch device
   const isTouchDevice =
     "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  if (isTouchDevice) {
+    document.body.classList.add("touch-device");
+  }
+
   const isDesktop = window.matchMedia(
     "(hover: hover) and (pointer: fine)",
   ).matches;
@@ -221,6 +225,7 @@
   const typedTextEl = document.getElementById("typed-text");
   const roles = [
     "Developer",
+    "Cloud Architect",
     "Problem Solver",
     "Cloud & System Security Enthusiast",
   ];
@@ -331,36 +336,6 @@
           card.style.setProperty("--mouse-y", y + "%");
         });
       }
-    });
-  }
-
-  // ==================================
-  //   TOUCH-FRIENDLY CARD ACTIVATION
-  // ==================================
-  if (isTouchDevice) {
-    // On touch, tapping a card gives it the active state
-    const touchCards = document.querySelectorAll(
-      ".project-card, .detail-card, .contact-card, .skill-card, .cert-card",
-    );
-    touchCards.forEach((card) => {
-      card.addEventListener(
-        "touchstart",
-        () => {
-          card.style.borderColor = "rgba(0, 212, 255, 0.25)";
-          card.style.background = "var(--bg-card-hover)";
-        },
-        { passive: true },
-      );
-      card.addEventListener(
-        "touchend",
-        () => {
-          setTimeout(() => {
-            card.style.borderColor = "";
-            card.style.background = "";
-          }, 300);
-        },
-        { passive: true },
-      );
     });
   }
 
@@ -659,4 +634,25 @@
   window.addEventListener("orientationchange", () => {
     setTimeout(setVH, 100);
   });
+
+  // ==================================
+  // ENABLE HOVER EFFECTS ON MOBILE (TAP)
+  // ==================================
+  if (isTouchDevice) {
+    const hoverCards = document.querySelectorAll(
+      ".project-card, .detail-card, .contact-card, .skill-card, .cert-card",
+    );
+
+    hoverCards.forEach((card) => {
+      card.addEventListener("touchstart", () => {
+        card.classList.add("touch-active");
+      });
+
+      card.addEventListener("touchend", () => {
+        setTimeout(() => {
+          card.classList.remove("touch-active");
+        }, 300);
+      });
+    });
+  }
 })();
