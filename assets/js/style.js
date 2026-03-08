@@ -221,7 +221,6 @@
   const typedTextEl = document.getElementById("typed-text");
   const roles = [
     "Developer",
-    "Cloud Architect",
     "Problem Solver",
     "Cloud & System Security Enthusiast",
   ];
