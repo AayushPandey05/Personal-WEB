@@ -1473,6 +1473,111 @@ img {
 }
 
 /* ==================================
+   PROFILES SECTION
+================================== */
+.profiles {
+  background: var(--bg-primary);
+}
+
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.profile-card {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  text-align: center;
+  transition:
+    background var(--transition-smooth),
+    border-color var(--transition-smooth),
+    transform var(--transition-fast);
+  will-change: transform;
+}
+
+.profile-card:hover,
+.profile-card.touch-active {
+  background: var(--bg-card-hover);
+  border-color: rgba(0, 212, 255, 0.25);
+  transform: translateY(-5px);
+}
+
+.profile-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  color: var(--accent-1);
+  transition:
+    transform var(--transition-smooth),
+    background var(--transition-smooth),
+    color var(--transition-smooth);
+}
+
+.profile-icon svg {
+  width: 32px;
+  height: 32px;
+  transition: transform var(--transition-smooth);
+}
+
+.profile-card:hover .profile-icon,
+.profile-card.touch-active .profile-icon {
+  background: rgba(0, 212, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.profile-name {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: color var(--transition-fast);
+}
+
+.profile-card:hover .profile-name,
+.profile-card.touch-active .profile-name {
+  color: var(--accent-1);
+}
+
+.profile-arrow {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  opacity: 0;
+  transform: translate(-10px, 10px);
+  transition: all var(--transition-smooth);
+}
+
+.profile-card:hover .profile-arrow,
+.profile-card.touch-active .profile-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
+  background: var(--accent-1);
+  border-color: var(--accent-1);
+  color: var(--bg-primary);
+}
+
+/* ==================================
    CONTACT SECTION
 ================================== */
 .contact {
@@ -1890,6 +1995,9 @@ a.contact-value:hover {
     grid-template-columns: 1fr;
     gap: 4rem;
   }
+  .profiles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .cert-card {
     padding: 1.8rem 2rem;
   }
@@ -2047,6 +2155,26 @@ a.contact-value:hover {
     gap: 2rem;
     margin-top: 4rem;
     padding-top: 4rem;
+  }
+
+  .profiles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 2.5rem;
+  }
+
+  .profile-arrow {
+    top: 50%;
+    transform: translateY(-50%) translateX(-10px);
+  }
+
+  .profile-card:hover .profile-arrow,
+  .profile-card.touch-active .profile-arrow {
+    transform: translateY(-50%) translateX(0);
   }
 
   .contact-card {
