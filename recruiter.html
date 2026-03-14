@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="theme-color" content="#0a0a0f" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <title>Recruiter Dashboard | Aayush Pandey</title>
+    <meta
+      name="description"
+      content="Executive overview of Aayush Pandey's skills, coding metrics, and projects."
+    />
+
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/img/favicon.png"
+    />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* Page-specific overrides */
+      body.recruiter-mode {
+        overflow-x: hidden;
+      }
+      .recruiter-dashboard {
+        background: transparent; /* Let canvas show through */
+        border: none;
+        padding-top: 14rem;
+        min-height: 100vh;
+      }
+      .particles-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+      }
+      .header {
+        background: rgba(10, 10, 15, 0.85);
+        backdrop-filter: blur(10px);
+      }
+      .nav-links {
+        display: none; /* Hide standard nav on this page */
+      }
+      @media(min-width: 1024px) {
+        .nav-container {
+            justify-content: flex-end;
+        }
+      }
+    </style>
+  </head>
+  <body class="recruiter-mode">
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+      <div class="preloader-inner">
+        <div class="preloader-ring"></div>
+        <span class="preloader-text">AP</span>
+      </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <header class="header scrolled" id="header">
+      <a href="index.html" class="logo" data-magnetic>
+        <span class="logo-text">A</span><span class="logo-accent">P</span>
+      </a>
+
+      <nav class="nav-container" id="nav-container">
+        <a href="mailto:aayushpandey2905@gmail.com" class="btn-cta" data-magnetic>Let's Talk</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="recruiter-toggle-wrap" data-magnetic>
+          <span class="toggle-label text-user">User</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="recruiter-toggle" checked />
+            <span class="toggle-slider"></span>
+          </label>
+          <span class="toggle-label text-recruiter">Recruiter</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Background Canvas -->
+      <canvas class="particles-canvas" id="particles-canvas"></canvas>
+
+      <!-- Dashboard -->
+      <section class="recruiter-dashboard" id="recruiter-dashboard">
+        <div class="dashboard-container">
+          <div class="dashboard-header reveal">
+            <h2>Developer <span class="text-gradient">Overview</span></h2>
+            <div class="dashboard-actions">
+              <a
+                href="assets/CV/AayushPandey_CV.pdf"
+                class="btn-primary"
+                download="Aayush_Pandey_Resume"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download CV</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <!-- Coding Stats -->
+            <div class="dashboard-card reveal" data-tilt>
+              <div class="card-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                  />
+                </svg>
+              </div>
+              <h3>Coding Metrics</h3>
+              <ul class="dashboard-list">
+                <li>
+                  <span class="list-label">LeetCode:</span>
+                  <span class="list-value">1576 (max:1576)</span>
+                </li>
+                <li>
+                  <span class="list-label">CodeStudio:</span>
+                  <span class="list-value">1570(max:1570)</span>
+                </li>
+                <li>
+                  <span class="list-label">CodeChef:</span>
+                  <span class="list-value">1054 (max:1170)</span>
+                </li>
+                <li>
+                  <span class="list-label">HackerRank:</span>
+                  <span class="list-value">5 Star (C++)</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Experience / Activity -->
+            <div class="dashboard-card reveal" data-tilt>
+              <div class="card-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+              </div>
+              <h3>Problem Solving Stats</h3>
+              <ul class="dashboard-list">
+                <li>
+                  <span class="list-label">Competitive Programming Question:</span>
+                  <span class="list-value">160+ Problems Solved</span>
+                </li>
+                <li>
+                  <span class="list-label">Problems Solved:</span>
+                  <span class="list-value">300+ DSA</span>
+                </li>
+                <li>
+                  <span class="list-label">Coding Streak:</span>
+                  <span class="list-value">100+ Days</span>
+                </li>
+                <li>
+                  <span class="list-label">Platforms:</span>
+                  <span class="list-value"
+                    >LeetCode, GFG, CodeChef</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="dashboard-card reveal" data-tilt>
+              <div class="card-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  ></path>
+                  <polyline points="13 2 13 9 20 9"></polyline>
+                </svg>
+              </div>
+              <h3>Quick Access</h3>
+              <div class="dashboard-links">
+                <a href="index.html#skills" class="dash-link"
+                  >Tech Stack & Skills &rarr;</a
+                >
+                <a href="index.html#projects" class="dash-link"
+                  >Projects & Architecture &rarr;</a
+                >
+                <a href="index.html#certifications" class="dash-link"
+                  >Certifications &rarr;</a
+                >
+                <a href="index.html#profiles" class="dash-link"
+                  >Coding Profiles &rarr;</a
+                >
+              </div>
+            </div>
+
+            <!-- Contact & Links -->
+            <div class="dashboard-card reveal" data-tilt>
+              <div class="card-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path>
+                </svg>
+              </div>
+              <h3>Contact Info</h3>
+              <ul class="dashboard-list">
+                <li>
+                  <span class="list-label">Email:</span>
+                  <a href="mailto:aayushpandey2905@gmail.com" class="list-value"
+                    >aayushpandey2905@gmail.com</a
+                  >
+                </li>
+                <li>
+                  <span class="list-label">Mobile:</span>
+                  <span class="list-value">+91-8263041524</span>
+                </li>
+                <li>
+                  <span class="list-label">LinkedIn:</span>
+                  <a
+                    href="https://linkedin.com/in/aayushpandey05"
+                    target="_blank"
+                    class="list-value"
+                    >/aayushpandey05</a
+                  >
+                </li>
+                <li>
+                  <span class="list-label">GitHub:</span>
+                  <a
+                    href="https://github.com/AayushPandey05"
+                    target="_blank"
+                    class="list-value"
+                    >/AayushPandey05</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Education -->
+            <div class="dashboard-card reveal" data-tilt>
+              <div class="card-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"></path>
+                </svg>
+              </div>
+              <h3>Education</h3>
+              <ul class="dashboard-list">
+                <li>
+                  <span class="list-label">Degree:</span>
+                  <span class="list-value">Bachelor of Technology</span>
+                </li>
+                <li>
+                  <span class="list-label">Major:</span>
+                  <span class="list-value" style="font-size:1.25rem;"
+                    >Computer Science</span
+                  >
+                </li>
+                <li>
+                  <span class="list-label">University:</span>
+                  <span class="list-value">Lovely Professional University</span>
+                </li>
+                <li>
+                  <span class="list-label">Timeline:</span>
+                  <span class="list-value">Aug 2023 - Present</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Core Skills -->
+            <div class="dashboard-card reveal" data-tilt>
+              <div class="card-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+
+              <h3>Tech Stack</h3>
+              <ul class="dashboard-list">
+                <li>
+                  <span class="list-label">Languages:</span>
+                  <span class="list-value">C++, JavaScript, Java</span>
+                </li>
+              
+                <li>
+                  <span class="list-label">Frontend:</span>
+                  <span class="list-value">HTML, CSS, Bootstrap, React</span>
+                </li>
+              
+                <li>
+                  <span class="list-label">Backend:</span>
+                  <span class="list-value">REST APIs</span>
+                </li>
+              
+                <li>
+                  <span class="list-label">Cloud:</span>
+                  <span class="list-value">AWS, Docker, Kubernetes, CI/CD</span>
+                </li>
+              
+                <li>
+                  <span class="list-label">Auth:</span>
+                  <span class="list-value">Auth0, OAuth, OIDC, SSO, MFA</span>
+                </li>
+              
+                <li>
+                  <span class="list-label">Tools:</span>
+                  <span class="list-value">Git, GitHub, GitHub Actions, Postman</span>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <span class="footer-logo">AP<span class="logo-accent">.</span></span>
+          <p>Building secure, scalable, and innovative solutions.</p>
+        </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; <span id="year">2026</span> Aayush Pandey. All rights reserved.
+        </p>
+      </div>
+    </footer>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script src="assets/js/style.js"></script>
+  </body>
+</html>
