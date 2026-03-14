@@ -1001,7 +1001,11 @@ img {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
-  padding: 2.5rem;
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
   transition:
     background var(--transition-fast),
     border-color var(--transition-fast),
@@ -1018,14 +1022,16 @@ img {
 
 .skill-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .skill-name {
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--text-primary);
+  text-align: center;
 }
 
 .skill-level {
