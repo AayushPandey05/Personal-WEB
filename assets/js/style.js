@@ -621,16 +621,55 @@
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
+
+      // Gather form data
+      const name = document.getElementById("form-name").value;
+      const email = document.getElementById("form-email").value;
+      const message = document.getElementById("form-message").value;
+
       const btn = contactForm.querySelector(".btn-submit span");
       const originalText = btn.textContent;
-      btn.textContent = "Sent! ✓";
-      btn.parentElement.style.background =
-        "linear-gradient(135deg, #00ff88, #00cc66)";
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.parentElement.style.background = "";
-        contactForm.reset();
-      }, 1000);
+      btn.textContent = "Sending... ⏳";
+      btn.parentElement.style.opacity = "0.8";
+      btn.parentElement.style.pointerEvents = "none";
+      
+      fetch("https://formsubmit.co/ajax/aayushpandey2905@gmail.com", {
+          method: "POST",
+          headers: { 
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+              name: name,
+              email: email,
+              message: message,
+              _subject: `New Contact Form Submission from ${name}`
+          })
+      })
+      .then(response => response.json())
+      .then(data => {
+          btn.textContent = "Sent Successfully! ✓";
+          btn.parentElement.style.background = "linear-gradient(135deg, #00ff88, #00cc66)";
+          btn.parentElement.style.opacity = "1";
+          
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.parentElement.style.background = "";
+            btn.parentElement.style.pointerEvents = "auto";
+            contactForm.reset();
+          }, 3000);
+      })
+      .catch(error => {
+          btn.textContent = "Error! Try Again ❌";
+          btn.parentElement.style.background = "linear-gradient(135deg, #ff4c4c, #cc0000)";
+          btn.parentElement.style.opacity = "1";
+          
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.parentElement.style.background = "";
+            btn.parentElement.style.pointerEvents = "auto";
+          }, 3000);
+      });
     });
   }
 
